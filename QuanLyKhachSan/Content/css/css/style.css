@@ -1,0 +1,1952 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap');
+
+@font-face {
+    font-family: 'HV_Muse';
+    src: url('font/hvmuse-regular.woff') format('woff'), url('Font/HVMuse-Regular.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HVMuse';
+    src: url('font/hvmuse-regular.woff2') format('woff2'), url('Font/HVMuse-Italic.woff') format('woff');
+    font-weight: lighter;
+    font-style: italic;
+    font-display: normal;
+}
+
+
+:root {
+    --primary: #09537b;
+    --secondary: #24b2ce;
+    --blackground-color: white;
+}
+/*chỉnh funtion chung*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+
+html { /*not touch*/
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+    html::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    html::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: .5rem;
+    }
+
+
+
+.heading {
+    font-size: 4rem;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.btn { /*button book now*/
+    position: absolute;
+    display: inline-block;
+    justify-content: right;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+/* header */
+
+/* Thiết lập header */
+.header {
+    position: fixed; /* Vị trí cố định */
+    top: 100;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Độ sâu hiển thị */
+    background: var(--white); /* Màu nền */
+    box-shadow: var(--box-shadow); /* Đổ bóng */
+    display: flex; /* Sắp xếp các thành phần theo hàng ngang */
+    justify-content: space-between; /* Căn chỉnh các thành phần theo khoảng cách đều nhau */
+    padding: 25px; /* Khoảng cách nội dung và mép */
+    align-items: center; /* Căn chỉnh các thành phần theo trục dọc */
+    cursor: pointer;
+    transition: background-color 0.4s ease-in-out;
+}
+
+
+
+    /* Button "Book now" */
+    .header .btn {
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        border: 1px solid white; /* Thêm khung đen 2px */
+        padding-top: 12px; /* Thêm padding cho nút */
+        padding-bottom: 12px;
+        padding-left: 35px;
+        padding-right: 35px;
+        transition: none;
+    }
+
+
+    .header .butt .btn:hover {
+        background-color: rgba(170, 131, 83, 1);
+        border: 1px solid transparent;
+    }
+
+
+
+    .header .butt .btn:active {
+        background-color: rgba(170, 131, 83, 1);
+    }
+
+    .header .butt {
+        background: var(--white); /* Màu nền */
+    }
+
+        .header.butt .btn {
+            border-width: 10px;
+        }
+
+    /* Chữ trong navbar */
+    .header a {
+        font-size: 1.7rem;
+        color: white; /* Màu chữ */
+        margin: 0 1rem; /* Khoảng cách giữa các từ */
+        position: relative; /* Đặt vị trí tương đối cho gạch chân */
+        transition: color 0.4s ease-in-out;
+    }
+
+    .header.scrolled {
+        background-color: white;
+        opacity: 0.98;
+    }
+
+        .header.scrolled .general a {
+            color: rgba(71, 55, 35, 1);
+            background-repeat: no-repeat;
+            font-weight: 400;
+        }
+
+        .header.scrolled .btn {
+            border-color: rgba(71, 55, 35, 1); /* Đổi màu border thành màu đen */
+            color: rgba(71, 55, 35, 1);
+            font-weight: 600;
+        }
+
+            .header.scrolled .btn:hover {
+                border-color: white; /* Đổi màu border thành màu đen */
+                color: white;
+                transition: none;
+            }
+
+        .header .general a[href="#home"]:not(:hover)::after {
+            width: 100%; /* Kéo dài gạch chân khi hover */
+            left: 0; /* Đặt lại vị trí ban đầu của gạch chân */
+            background-color: white;
+        }
+
+    .header.scrolled .general a[href="#home"]:not(:hover)::after {
+        width: 100%; /* Kéo dài gạch chân khi hover */
+        background-color: rgba(71, 55, 35, 1);
+    }
+
+    /* Gạch chân dưới chữ */
+    .header .general a::after {
+        content: "";
+        position: absolute; /* Đặt vị trí tuyệt đối cho gạch chân */
+        bottom: -2px; /* Điều chỉnh vị trí của gạch chân */
+        left: 0; /* Đặt gạch chân ở bên trái */
+        width: 0; /* Ẩn gạch chân ban đầu */
+        height: 2px; /* Chiều cao của gạch chân */
+        background-color: white; /* Màu gạch chân */
+        transition: width 0.3s ease-in-out, left 0.3s ease-in-out; /* Hiệu ứng chuyển đổi */
+    }
+
+    .header .general {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+    }
+    
+        /* Khi hover chữ */
+        .header .general a:hover::after {
+            width: 100%; /* Kéo dài gạch chân khi hover */
+            left: 0; /* Đặt lại vị trí ban đầu của gạch chân */
+        }
+
+    /* Khi không hover chữ */
+    .header a:not(:hover)::after {
+        width: 0; /* Thu hẹp gạch chân khi không hover */
+        left: 50%; /* Đưa gạch chân về giữa */
+    }
+
+    .header.scrolled .general a::after {
+        background-color: rgba(71, 55, 35, 1); /* Đổi màu gạch chân thành màu đen khi scroll xuống */
+    }
+
+    .header .logo1 {
+        display: none; /* Ẩn hình ảnh ban đầu */
+    }
+
+    .header.scrolled .logo1 {
+        display: block; /* Hiển thị hình ảnh khi scroll xuống */
+    }
+
+    .header.scrolled .logo {
+        display: none;
+    }
+/* home */
+
+.home {
+    padding: 0;
+    font-family: 'hv_muse', sans-serif;
+    z-index: 0;
+}
+
+    .home .slide {
+        position: relative; /* Thêm thuộc tính position */
+        height: 550px;
+        background-size: cover !important;
+        background-position: center !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+    }
+
+        .home .slide .welcome-text{
+            margin-top:6%;
+            position: absolute;
+            margin-left: 170px;
+            font-size: 5rem;
+            font-weight: 200;
+            color: white;
+            z-index: 10;
+            text-transform: capitalize;
+        }
+
+
+
+    .home .scroldown {
+        position: absolute;
+        bottom: 1%; /* Điều chỉnh vị trí của thanh scroll xuống phía dưới */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1px;
+        height: 75px;
+        background: rgba(255, 255, 255, 0.248);
+        z-index:20;
+    }
+
+        .home .scroldown::before {
+            content: '';
+            position: absolute;
+            top: 0%;
+            left: 0%; /* Đặt gốc của gradient ở giữa */
+            transform: translateX(-50%); /* Dịch chuyển ngang thành phần điều hướng */
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, #fff, transparent);
+            animation: animate 2s linear infinite;
+        }
+
+        .home .scroldown::before {
+            animation-delay: 4s, 4s;
+        }
+
+@keyframes animate {
+    0% {
+        transform-origin: top; /* Đặt gốc biến đổi */
+        transform: scaleY(0);
+    }
+
+    50% {
+        transform-origin: top; /* Đặt gốc biến đổi */
+        transform: scaleY(1);
+    }
+
+    52% {
+        transform-origin: bottom; /* Đặt gốc biến đổi */
+        transform: scaleY(1);
+    }
+
+    100% {
+        transform-origin: bottom; /* Đặt gốc biến đổi */
+        transform: scaleY(0);
+    }
+}
+
+
+
+/* end */
+
+
+
+/* welcome */
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(var(--bs-gutter-x)*-.5);
+    margin-right: calc(var(--bs-gutter-x)*-.5);
+    margin-top: calc(var(--bs-gutter-y)*-1)
+}
+
+
+
+@media (min-width: 768px) {
+
+
+    .row-cols-md-1 > * {
+        flex: 0 0 auto;
+        width: 100%
+    }
+
+    .row-cols-md-2 > * {
+        flex: 0 0 auto;
+        width: 50%
+    }
+
+    .row-cols-md-3 > * {
+        flex: 0 0 auto;
+        width: 33.33333%
+    }
+
+    .row-cols-md-4 > * {
+        flex: 0 0 auto;
+        width: 25%
+    }
+
+    .row-cols-md-5 > * {
+        flex: 0 0 auto;
+        width: 20%
+    }
+
+    .row-cols-md-6 > * {
+        flex: 0 0 auto;
+        width: 16.66667%
+    }
+
+    .col-md-auto {
+        flex: 0 0 auto;
+        width: auto
+    }
+
+    .col-md-1 {
+        flex: 0 0 auto;
+        width: 8.33333%
+    }
+
+    .col-md-2 {
+        flex: 0 0 auto;
+        width: 16.66667%
+    }
+
+    .col-md-3 {
+        flex: 0 0 auto;
+        width: 25%
+    }
+
+    .col-md-4 {
+        flex: 0 0 auto;
+        width: 33.33333%
+    }
+
+    .col-md-5 {
+        flex: 0 0 auto;
+        width: 41.66667%
+    }
+
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%
+    }
+
+    .col-md-7 {
+        flex: 0 0 auto;
+        width: 58.33333%
+    }
+
+    .col-md-8 {
+        flex: 0 0 auto;
+        width: 66.66667%
+    }
+
+    .col-md-9 {
+        flex: 0 0 auto;
+        width: 75%
+    }
+
+    .col-md-10 {
+        flex: 0 0 auto;
+        width: 83.33333%
+    }
+
+    .col-md-11 {
+        flex: 0 0 auto;
+        width: 91.66667%
+    }
+
+    .col-md-12 {
+        flex: 0 0 auto;
+        width: 100%
+    }
+
+    .offset-md-0 {
+        margin-left: 0
+    }
+
+    .offset-md-1 {
+        margin-left: 8.33333%
+    }
+
+    .offset-md-2 {
+        margin-left: 16.66667%
+    }
+
+    .offset-md-3 {
+        margin-left: 25%
+    }
+
+    .offset-md-4 {
+        margin-left: 33.33333%
+    }
+
+    .offset-md-5 {
+        margin-left: 41.66667%
+    }
+
+    .offset-md-6 {
+        margin-left: 50%
+    }
+
+    .offset-md-7 {
+        margin-left: 58.33333%
+    }
+
+    .offset-md-8 {
+        margin-left: 66.66667%
+    }
+
+    .offset-md-9 {
+        margin-left: 75%
+    }
+
+    .offset-md-10 {
+        margin-left: 83.33333%
+    }
+
+    .offset-md-11 {
+        margin-left: 91.66667%
+    }
+
+    .g-md-0, .gx-md-0 {
+        --bs-gutter-x: 0
+    }
+
+    .g-md-0, .gy-md-0 {
+        --bs-gutter-y: 0
+    }
+
+    .g-md-1, .gx-md-1 {
+        --bs-gutter-x: .25rem
+    }
+
+    .g-md-1, .gy-md-1 {
+        --bs-gutter-y: .25rem
+    }
+
+    .g-md-2, .gx-md-2 {
+        --bs-gutter-x: .5rem
+    }
+
+    .g-md-2, .gy-md-2 {
+        --bs-gutter-y: .5rem
+    }
+
+    .g-md-3, .gx-md-3 {
+        --bs-gutter-x: 1rem
+    }
+
+    .g-md-3, .gy-md-3 {
+        --bs-gutter-y: 1rem
+    }
+
+    .g-md-4, .gx-md-4 {
+        --bs-gutter-x: 1.5rem
+    }
+
+    .g-md-4, .gy-md-4 {
+        --bs-gutter-y: 1.5rem
+    }
+
+    .g-md-5, .gx-md-5 {
+        --bs-gutter-x: 3rem
+    }
+
+    .g-md-5, .gy-md-5 {
+        --bs-gutter-y: 3rem
+    }
+}
+
+
+.img, picture.img {
+    background-color: #142120;
+    overflow: hidden;
+    position: relative
+}
+
+    .img:after, picture.img:after {
+        content: "";
+        display: block;
+        padding-bottom: 60%
+    }
+
+    .img img, picture.img img {
+        height: 100%;
+        left: 0;
+        -o-object-fit: cover;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%
+    }
+
+picture {
+    display: inline-block
+}
+
+/*kích cỡ chữ*/
+/*chữ nhỏ*/
+#pageHome .par-b {
+    color: rgba(106, 99, 90, 1);
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.6rem; /* Thay đổi từ px thành rem */
+    font-weight: 400;
+    margin-right: -8.75%; /* Thay đổi từ px thành % */
+    height: 8rem; /* Thay đổi từ px thành rem */
+    opacity: 1;
+    margin-left: 12%; /* Thay đổi từ px thành % */
+    margin-bottom: 32rem; /* Bạn có thể điều chỉnh giá trị này nếu cần thiết */
+    color: rgba(0, 0, 0,1);
+    text-transform: none;
+}
+
+/*chữ lớn*/
+#pageHome .scrollspy-example h2 {
+    line-height: 14rem; /* Thay đổi từ px thành rem */
+    font-weight: 400;
+    color: rgba(71, 55, 35, 1);
+    margin-left: 4%; /* Thay đổi từ px thành % */
+    margin-bottom: 8rem; /* Thay đổi từ px thành rem */
+    margin-top: 25rem; /* Thay đổi từ px thành rem */
+    font-family: 'HV_Muse', sans-serif;
+}
+
+#pageHome .scrollspy-example .wel {
+    font-size: 12rem; /* Thay đổi từ px thành rem */
+    text-transform: none;
+}
+
+@media (min-width: 768px) and (min-width:1200px) {
+    #pageHome .scrollspy-example h2 {
+        font-size: 9.9375rem; /* Thay đổi từ px thành rem */
+    }
+}
+
+
+
+#pageHome section.materials .topRow .leftPart, #pageHome section.materials .topRow .rightPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end
+}
+
+    #pageHome section.materials .topRow .rightPart .img {
+        right: 64px; /*vị trí của hình bên phải*/
+    }
+
+
+
+
+@media (min-width: 700px) {
+    #pageHome section.materials .topRow .leftPart .img {
+        margin-top: calc(1.9375rem + 8.25vw)
+    }
+}
+
+@media (min-width: 700px) and (min-width:1200px) {
+    #pageHome section.materials .topRow .leftPart .img {
+        margin-top: 5.125rem;
+        margin-left: 64px; /*vị trí của hình bên trái*/
+    }
+}
+
+
+
+
+
+@media (max-width: 565px) {
+    #pageHome section.materials .topRow .leftPart .img {
+        margin-left: 100rem;
+        margin-right: 0
+    }
+
+    #pageHome section.materials .topRow .rightPart {
+        margin-top: 2em;
+    }
+}
+
+#pageHome section.materials .topRow .leftPart .img {
+    transform-origin: bottom left;
+    width: 70%
+}
+
+    #pageHome section.materials .topRow .leftPart .img:after {
+        content: "";
+        display: block;
+        padding-bottom: 117%
+    }
+
+#pageHome section.materials .topRow .rightPart .img {
+    transform-origin: top right;
+    width: 100%;
+}
+
+    #pageHome section.materials .topRow .rightPart .img:after {
+        content: "";
+        display: block;
+        padding-bottom: 124%
+    }
+
+
+
+
+/* end */
+
+.rooms {
+    text-align: center;
+    padding-top: 156px;
+    padding-bottom: 80px;
+    ;
+}
+
+.ourroom p {
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(150, 150, 150, 1);
+    font-weight: 700;
+    letter-spacing: 2.4px;
+}
+
+.rooms .ourroom2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: rgba(71, 55, 35, 1);
+    font-weight: 400;
+    font-family: 'HV_Muse', sans-serif;
+}
+
+
+.ourroom1 {
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    padding-bottom: 72px;
+    margin-top: 25px;
+    text-transform: unset;
+}
+
+    .ourroom1 p {
+        text-transform: none;
+    }
+
+
+
+/* start animation*/
+
+.sliders {
+    width: 1440px;
+    height: 700px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+    /*text-button*/
+    .sliders .items {
+        position: relative;
+        cursor: pointer;
+        width: 100%;
+        height: 700px;
+        text-align: left;
+    }
+
+.image-overlay {
+    position: absolute;
+    display: block;
+    top: 280px;
+    left: 480px;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 1;
+    text-align: left;
+    width: 1200px;
+}
+
+    .image-overlay h1 {
+        margin-left: 500px;
+        margin-bottom: -10px;
+        font-size: 16px;
+        z-index: 1;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .image-overlay p {
+        font-family: 'HV_Muse', sans-serif;
+        padding-left: 490px;
+        margin-bottom: -10px;
+        font-size: 86px;
+        font-weight: 400;
+        z-index: 1;
+    }
+
+.view-room-button {
+    margin-top: 36px;
+    height: 48px;
+    width: 150px;
+    font-size: 14px;
+    color: white;
+    border: white solid;
+    border-width: 1px;
+    background-color: transparent;
+    margin-left: 500px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.image-overlay .view-room-button:hover {
+    background-color: rgba(170, 131, 83, 1);
+    border: none;
+}
+
+/*text2*/
+.image-overlay1 {
+    position: absolute;
+    display: block;
+    top: 330px;
+    left: 970px;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 1;
+}
+
+    .image-overlay1 h1 {
+        margin-left: 500px;
+        margin-bottom: -10px;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .image-overlay1 p {
+        font-family: 'HV_Muse', sans-serif;
+        padding-left: 490px;
+        margin-bottom: -10px;
+        font-size: 86px;
+        font-weight: 400;
+        font-weight: 400;
+        z-index: -1;
+    }
+
+    .image-overlay1 .view-room-button {
+        margin-top: 36px;
+        height: 48px;
+        width: 150px;
+        font-size: 14px;
+        color: white;
+        border: white solid;
+        border-width: 1px;
+        background-color: transparent;
+        margin-left: 500px;
+        z-index: 20;
+    }
+
+        .image-overlay1 .view-room-button:hover {
+            background-color: rgba(170, 131, 83, 1);
+            border: none;
+            z-index: 20;
+        }
+
+.image-overlay2_1 {
+    position: absolute;
+    display: block;
+    top: 245px;
+    left: -90px;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 1;
+}
+
+    .image-overlay2_1 p {
+        font-family: 'HV_Muse', sans-serif;
+        padding-left: 500px;
+        margin-bottom: -10px;
+        font-size: 86px;
+        font-weight: 400;
+        font-weight: 400;
+    }
+
+/*text2*/
+.image-overlay2_2 {
+    position: absolute;
+    display: inline;
+    top: 330px;
+    left: 440px;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 1;
+    width: 1100px;
+}
+
+    .image-overlay2_2 h1 {
+        margin-left: 500px;
+        margin-bottom: -10px;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .image-overlay2_2 p {
+        font-family: 'HV_Muse', sans-serif;
+        padding-left: 490px;
+        margin-bottom: -10px;
+        font-size: 86px;
+        font-weight: 400;
+        font-weight: 400;
+    }
+
+    .image-overlay2_2 .view-room-button {
+        margin-top: 36px;
+        height: 48px;
+        width: 150px;
+        font-size: 14px;
+        color: white;
+        border: white solid;
+        border-width: 1px;
+        background-color: transparent;
+        margin-left: 500px;
+        z-index: 20;
+    }
+
+        .image-overlay2_2 .view-room-button:hover {
+            background-color: rgba(170, 131, 83, 1);
+            border: none;
+        }
+/*text3*/
+
+.image-overlay2_3 {
+    position: absolute;
+    display: block;
+    top: 330px;
+    left: 970px;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 1;
+    margin-bottom: 100;
+}
+
+    .image-overlay2_3 h1 {
+        margin-left: 500px;
+        margin-bottom: -10px;
+        font-size: 16px;
+        z-index: 1;
+        font-weight: 400;
+    }
+
+    .image-overlay2_3 p {
+        font-family: 'HV_Muse', sans-serif;
+        padding-left: 490px;
+        margin-bottom: -10px;
+        font-size: 86px;
+        font-weight: 400;
+        z-index: 1;
+    }
+
+    .image-overlay2_3 .view-room-button {
+        margin-top: 36px;
+        height: 48px;
+        width: 150px;
+        font-size: 14px;
+        color: white;
+        border: white solid;
+        border-width: 1px;
+        background-color: transparent;
+        margin-left: 500px;
+        z-index: 20;
+    }
+
+        .image-overlay2_3 .view-room-button:hover {
+            background-color: rgba(170, 131, 83, 1);
+            border: none;
+        }
+/*text4*/
+.image-overlay2_4 {
+    position: absolute;
+    display: block;
+    top: 340px;
+    left: 1030px;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 1;
+    margin-bottom: 100;
+    width: 890px;
+}
+
+    .image-overlay2_4 h1 {
+        margin-left: 500px;
+        margin-bottom: -10px;
+        font-size: 16px;
+        z-index: 1;
+        font-weight: 400;
+    }
+
+    .image-overlay2_4 p {
+        font-family: 'HV_Muse', sans-serif;
+        padding-left: 490px;
+        margin-bottom: -10px;
+        font-size: 86px;
+        font-weight: 400;
+        z-index: 1;
+        word-wrap: normal;
+    }
+
+    .image-overlay2_4 .view-room-button {
+        margin-top: 36px;
+        height: 48px;
+        width: 150px;
+        font-size: 14px;
+        color: white;
+        border: white solid;
+        border-width: 1px;
+        background-color: transparent;
+        margin-left: 500px;
+        z-index: 20;
+    }
+
+        .image-overlay2_4 .view-room-button:hover {
+            background-color: rgba(170, 131, 83, 1);
+            border: none;
+        }
+/*end text-button*/
+
+
+.sliders .list {
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1.5s;
+}
+
+    .sliders .list img {
+        width: 1400px;
+        max-width: 100vw;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.sliders .buttons {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    left: 0%;
+    justify-content: space-between;
+}
+
+    .sliders .buttons button {
+        width: 300px;
+        height: 700px;
+        background-color: transparent;
+        color: #fff;
+        border: none;
+    }
+
+    .sliders .buttons .pre {
+        z-index: 30;
+        width: 420px;
+    }
+
+    .sliders .buttons .nex {
+        margin-right: -250px;
+        width: 900px;
+    }
+
+    .sliders .buttons .pre:hover {
+        z-index: 30;
+        cursor: url("image/arrow_left.svg"), auto;
+    }
+
+    .sliders .buttons .nex:hover {
+        z-index: 2;
+        cursor: url("image/arrow_right.png"), auto;
+    }
+
+@media screen and (max-width: 800px) {
+    .sliders {
+        height: 400px;
+    }
+}
+
+/*end text-button*/
+
+
+.slider .list {
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1.5s;
+}
+
+    .slider .list img {
+        width: 1400px;
+        max-width: 100vw;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.slider .buttons {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    left: 0%;
+    justify-content: space-between;
+}
+
+    .slider .buttons button {
+        height: 700px;
+        background-color: transparent;
+        border: none;
+    }
+
+    .slider .buttons .pre {
+        z-index: 30;
+        width: 370px;
+        background-color: blue;
+    }
+
+    .slider .buttons .nex {
+        margin-right: -250px;
+        width: 600px;
+    }
+
+    .slider .buttons .pre:hover {
+        z-index: 30;
+        cursor: url("image/arrow_left.svg"), auto;
+    }
+
+    .slider .buttons .nex:hover {
+        z-index: 2;
+        cursor: url("image/arrow_right.png"), auto;
+    }
+
+@media screen and (max-width: 800px) {
+    .slider {
+        height: 400px;
+    }
+}
+
+/* end animation*/
+
+
+/* services */
+
+.services {
+    text-align: left;
+    margin-left: 64px;
+}
+
+.ourservice p {
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(150, 150, 150, 1);
+    font-weight: 700;
+    margin-top: 156px;
+    letter-spacing: 2.4px;
+}
+
+
+.services .ourservice2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+    color: rgba(71, 55, 35, 1);
+    font-weight: 400;
+    font-family: 'HV_Muse', sans-serif;
+}
+
+
+.ourservice1 {
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    padding-bottom: 113px;
+    margin-top: 25px;
+}
+
+    .ourservice1 p {
+        text-transform: none;
+        margin-bottom: -70px;
+    }
+
+/*image-services*/
+.container-wrapper {
+    display: flex;
+    justify-content: space-between; /* Các phần tử sẽ được căn cách đều nhau trên màn hình */
+    flex-wrap: wrap; /* Cho phép các phần tử tự động xuống dòng khi cần */
+}
+
+.container, .container1 {
+    flex: 0 0 calc(50% - 14px); /* Sử dụng 50% chiều rộng của flex container và trừ đi khoảng cách giữa chúng */
+    max-width: calc(47%); /* Đảm bảo chiều rộng tối đa không vượt quá 50% */
+    margin-bottom: 28px; /* Khoảng cách giữa các hàng */
+    position: relative;
+    overflow: hidden; /* Ngăn chặn phần tử con tràn ra ngoài */
+}
+
+.container1 {
+    margin-right: 30px;
+}
+
+    /* Tạo kiểu cho hình ảnh */
+    .container .img, .container1 .img {
+        width: 100%;
+        height: auto;
+        display: block;
+        opacity: 1;
+        transition: transform 0.6s ease; /* Thêm hiệu ứng chuyển đổi */
+    }
+
+    /* Bố cục vị trí vùng chứa text */
+    .container .fadeOverlay, .container1 .fadeOverlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(10, 9, 9, 0.493);
+        color: white;
+        font-size: 40px;
+        opacity: 0;
+    }
+
+    /* Thêm hiệu ứng khi hover */
+    .container:hover .fadeOverlay, .container1:hover .fadeOverlay {
+        opacity: 0.8;
+        animation: fade 0.6s backwards;
+        --arrow: url("image/detail.svg");
+        cursor: var(--arrow), auto;
+    }
+
+    /* Tạo kiểu cho text, bố cục hiển thị ở giữa */
+    .container .fadeOverlay p, .container1 .fadeOverlay p {
+        position: absolute;
+        bottom: -58px;
+        left: 40%;
+        transform: translate(-50%, 50%);
+        transition: bottom 0.6s ease-in-out;
+        color: white;
+        padding-left: 100px;
+        width: 600px;
+        font-size: 14px;
+        text-transform: none;
+        margin-bottom: 58px;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+/* Tạo hiệu ứng animation */
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.8;
+    }
+}
+
+.container:hover .fadeOverlay p, .container1:hover .fadeOverlay p {
+    bottom: 10%;
+}
+
+/* Kiểu cho chữ meeting */
+.container .fadeOverlay .meeting, .container1 .fadeOverlay .meeting {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 58px;
+    font-family: 'HV_Muse', sans-serif;
+    color: rgba(228, 168, 83, 1);
+    position: absolute;
+    left: 40%; /* Điều chỉnh vị trí của chữ meeting */
+    transform: translate(-50%, 50%);
+    transition: bottom 0.6s ease-in-out;
+    padding-bottom: 15px;
+}
+
+.container:hover .fadeOverlay .meeting, .container1:hover .fadeOverlay .meeting {
+    bottom: 20%;
+}
+
+/* Hiệu ứng phóng to hình ảnh khi hover */
+.container:hover .img, .container1:hover .img {
+    transform: scale(1.2); /* Phóng to 20% khi rê chuột vào */
+    cursor: pointer;
+}
+
+/* end */
+
+
+
+/*Our Promotion*/
+
+.promotion {
+    text-align: left;
+    padding-top: 28px;
+    margin-left: 640px;
+    margin-bottom: 60px;
+}
+
+.ourpro p {
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(150, 150, 150, 1);
+    font-weight: 700;
+    margin-top: 156px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+
+.promotion .ourpro2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: rgba(71, 55, 35, 1);
+    font-weight: 400;
+    font-family: 'HV_Muse', sans-serif;
+}
+
+
+.ourpro1 {
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    padding-bottom: 113px;
+    margin-top: 25px;
+    text-transform: unset;
+}
+
+    .ourpro1 p {
+        text-transform: none;
+        margin-bottom: -70px;
+    }
+/*Hiệu ứng ourpromotion*/
+
+
+
+/*end*/
+
+
+/* gallery */
+
+.gallery {
+    text-align: center;
+    padding-top: 250px; /*khoảng cách hình đến our gallery*/
+}
+
+.ourgallery1 {
+    margin-bottom: 150px;
+}
+
+.ourgallery {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-family: 'hv_muse';
+    color: rgba(96, 64, 22, 1);
+}
+
+/*image*/
+.gallery .slider .slide img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Đảm bảo hình ảnh không bị biến dạng và vẫn hiển thị đầy đủ */
+    transition: transform 1s;
+}
+
+.gallery .slider {
+    height: auto;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.gallery .slide-track {
+    display: flex;
+    width: calc(450px* 18); /* chỉnh độ to của hình*/
+    animation: scroll 45s linear infinite;
+}
+
+.gallery .slider .slide {
+    display: flex;
+    align-items: center;
+    perspective: 100px;
+    padding: 50px;
+}
+
+img {
+    width: 100%;
+    transition: transform 2s;
+}
+
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% + 250px));
+    }
+}
+
+/* end */
+
+/* footer */
+.footer {
+    margin-top: 10%;
+    background: rgba(26, 26, 26, 1);
+    height: 100%; /* thay đổi từ 637px thành 100% */
+    position: relative;
+}
+
+.contact {
+    position: absolute;
+    top: 14%;
+    left: 40%;
+    color: rgba(211, 211, 211, 1);
+    font-size: 2.2vw; /* thay đổi từ px thành vw */
+    font-weight: 400;
+    font-family: "HV_Muse", sans-serif;
+}
+
+.phonenumber {
+    position: absolute;
+    top: 26%; /* tính toán vị trí dựa trên top của .contact */
+    left: 42%;
+    color: #fff;
+    font-size: 3.2vw; /* thay đổi từ px thành vw */
+    font-family: 'HV_Muse', sans-serif;
+}
+
+.email {
+    position: absolute;
+    color: white;
+    font-size: 1.2vw; /* thay đổi từ px thành vw */
+    border-width: 0.2vw; /* thay đổi từ px thành vw */
+    top: 42%; /* tính toán vị trí dựa trên top của .phonenumber */
+    left: 44%;
+    border-style: solid;
+    padding-top: 1vw; /* thay đổi từ px thành vw */
+    padding-bottom: 1vw;
+    padding-left: 4vw;
+    padding-right: 2vw;
+    border-radius: 4vw; /* thay đổi từ px thành vw */
+    text-transform: lowercase;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.khung1 {
+    width: 2.5vw; /* thay đổi từ px thành vw */
+    height: 2.5vw; /* thay đổi từ px thành vw */
+    margin-left: 45%;
+    margin-bottom: 19.5%;
+}
+
+.mail {
+    width: 1.8vw; /* thay đổi từ px thành vw */
+    height: 1.1vw; /* thay đổi từ px thành vw */
+    margin-left: -2.3vw; /* thay đổi từ px thành vw */
+    margin-bottom: 20vw;
+    margin-top: 17.9%;
+}
+
+.address {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.Logo {
+    position: absolute;
+    top: 70%;
+    left: 5%;
+    font-size: 1.5vw; /* thay đổi từ px thành vw */
+    font-family: 'Open Sans', sans-serif;
+}
+
+.mar {
+    position: absolute;
+    font-size: 1vw; /* thay đổi từ px thành vw */
+    top: 70%;
+    left: 42%;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.calle {
+    position: absolute;
+    top: 70%;
+    right: 5%;
+    font-size: 1vw; /* thay đổi từ px thành vw */
+    font-family: 'Open Sans', sans-serif;
+}
+
+.nocopy {
+    position: absolute;
+    top: 88%;
+    left: 5%;
+    font-size: 1vw; /* thay đổi từ px thành vw */
+    font-family: 'Open Sans', sans-serif;
+}
+
+.Logo1 {
+    position: absolute;
+    top: 88%;
+    left: 11%;
+    font-size: 1vw; /* thay đổi từ px thành vw */
+    font-family: 'Open Sans', sans-serif;
+    text-transform: lowercase;
+    font-weight: 400;
+}
+
+.poli {
+    position: absolute;
+    top: 88%;
+    left: 76%;
+    font-size: 1vw; /* thay đổi từ px thành vw */
+    font-family: 'Open Sans', sans-serif;
+}
+
+.term {
+    position: absolute;
+    top: 88%;
+    right: 5%;
+    font-size: 1vw; /* thay đổi từ px thành vw */
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/* end */
+
+/* media queries */
+
+@media (max-width:991px) {
+
+    html {
+        font-size: 55%;
+    }
+
+    .header {
+        padding: 2rem 3rem;
+    }
+}
+
+.hello {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.owl-carousel {
+    position: relative;
+    background-color: black;
+    padding-bottom: 200px;
+    padding-top: 70px;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transform: scale(1);
+    width: 80%;
+}
+
+.active .item {
+    transition: opacity 1s ease, transform 1s ease;
+    opacity: 1;
+    transform: scale(1.3);
+    width: 80%;
+}
+
+.item img {
+    max-width: 100%;
+    height: 360px;
+}
+
+.owl-stage {
+    display: flex;
+}
+
+.owl-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 140px 0px 60px 0px;
+}
+
+.discover-button {
+    z-index: 10;
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-style: solid;
+    border: 1px solid rgba(255, 255, 255, 1);
+    width: 150px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    background-color: black;
+}
+
+    .discover-button:hover {
+        background-color: rgba(170, 131, 83, 1);
+        border: none;
+    }
+
+.text-container {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Giới hạn chiều rộng của text-container */
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước của text-container */
+}
+
+    .text-container h2 {
+        font-family: 'HV_Muse', sans-serif;
+        font-size: 96px;
+        display: none;
+        margin-top: -100px;
+        text-align: center;
+        position: absolute;
+        color: white;
+        -webkit-animation: fadeslideUp 12s infinite; /* Chrome, Opera 15+, Safari 5+ */
+        animation: fadeslideUp 22s infinite;
+    }
+
+@-webkit-keyframes fadeslideUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(80%);
+    }
+
+    10% {
+        opacity: 1;
+        -webkit-transform: translateY(50%);
+    }
+
+    20% {
+        opacity: 1;
+        -webkit-transform: translateY(50%);
+    }
+
+    25% {
+        opacity: 0;
+        -webkit-transform: translateY(60%);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(60%);
+    }
+}
+
+
+
+
+@keyframes fadeslideUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(80%);
+    }
+
+    10% {
+        opacity: 1;
+        -webkit-transform: translateY(50%);
+    }
+
+    20% {
+        opacity: 1;
+        -webkit-transform: translateY(50%);
+    }
+
+    25% {
+        opacity: 1;
+        -webkit-transform: translateY(60%);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(60%);
+    }
+}
+
+
+
+.title p {
+    font-weight: 400;
+    font-size: 1.75rem;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 3rem;
+    margin-bottom: 10%;
+    margin-top: 20%;
+    text-align: center;
+    text-transform: none;
+}
+
+/* services */
+
+.servs {
+    margin-left: 44px;
+    margin-bottom: 350px;
+    margin-top: -540px;
+}
+
+.ourserv p {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(71, 55, 35, 1);
+    font-weight: 400;
+    margin-left: 742px;
+    letter-spacing: 2.4px;
+    margin-top: 4px;
+}
+
+
+.servs .ourserv2 {
+    font-size: 34px;
+    margin-left: 738px;
+    margin-top: -490px;
+    color: rgba(71, 55, 35, 1);
+    font-weight: 600;
+    font-family: 'HV_Muse', sans-serif;
+}
+
+
+.ourserv1 p {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-left: 742px;
+    margin-top: 24px;
+    color: black;
+    line-height: 24px;
+    text-transform: none;
+}
+
+.servs .button {
+    margin-left: 742px;
+    margin-top: 74px;
+    padding: 12px 35px 12px 35px;
+    font-size: 14px;
+    border-color: rgba(71, 55, 35, 1);
+    color: rgba(71, 55, 35, 1);
+    background-color: white;
+    font-weight: 550;
+    border: solid 1px;
+    z-index: 0;
+}
+
+    .servs .button:hover {
+        color: white;
+        background-color: rgba(170, 131, 83, 1);
+        z-index: 0;
+    }
+/*image-services*/
+
+/* Tạo kiểu vùng chứa hình ảnh */
+.ctn {
+    max-width: 600px;
+    max-height: 734px;
+    position: relative;
+    display: inline-block; /* Sử dụng display inline-block để hai hình ảnh sẽ được hiển thị cùng một hàng */
+    overflow: hidden; /* Ngăn chặn phần tử con tràn ra ngoài */
+    margin-left: 64px;
+}
+
+    /* Tạo kiểu cho hình ảnh */
+    .ctn .img {
+        width: 634px;
+        height: 734px;
+        display: block;
+        opacity: 1;
+        transition: transform 0.6s ease; /* Thêm hiệu ứng chuyển đổi */
+    }
+
+
+
+    /* Thêm hiệu ứng khi hover */
+    .ctn:hover {
+        --arrow: url("image/detail.svg");
+        cursor: var(--arrow), auto;
+    }
+
+
+        /* Hiệu ứng phóng to hình ảnh khi hover */
+        .ctn:hover .img {
+            transform: scale(1.2); /* Phóng to 20% khi rê chuột vào */
+        }
+
+/* end */
+
+
+
+/* services2 */
+
+.servs2 {
+    margin-left: 44px;
+    margin-bottom: 350px;
+    margin-top: -550px;
+}
+
+.os p {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(71, 55, 35, 1);
+    font-weight: 400;
+    margin-left: 72px;
+    letter-spacing: 2.4px;
+    margin-top: 4px;
+}
+
+
+.servs2 .os2 {
+    font-size: 34px;
+    margin-left: 68px;
+    margin-top: -490px;
+    color: rgba(71, 55, 35, 1);
+    font-weight: 400;
+    font-family: 'HV_Muse', sans-serif;
+}
+
+
+.os1 p {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-left: 74px;
+    margin-top: 24px;
+    text-transform: none;
+}
+
+.servs2 .button2 {
+    margin-left: 74px;
+    margin-top: 74px;
+    padding: 12px 35px 12px 35px;
+    font-size: 14px;
+    border-color: rgba(71, 55, 35, 1);
+    color: rgba(71, 55, 35, 1);
+    background-color: white;
+    font-weight: 550;
+    border: solid 1px;
+}
+
+    .servs2 .button2:hover {
+        color: white;
+        background-color: rgba(170, 131, 83, 1);
+    }
+/*image-services*/
+
+/* Tạo kiểu vùng chứa hình ảnh */
+.ctn2 {
+    max-width: 600px;
+    max-height: 734px;
+    position: relative;
+    display: block; /* Sử dụng display inline-block để hai hình ảnh sẽ được hiển thị cùng một hàng */
+    overflow: hidden; /* Ngăn chặn phần tử con tràn ra ngoài */
+    margin-left: 664px;
+}
+
+    /* Tạo kiểu cho hình ảnh */
+    .ctn2 .img {
+        width: 634px;
+        height: 734px;
+        display: block;
+        opacity: 1;
+        transition: transform 0.6s ease; /* Thêm hiệu ứng chuyển đổi */
+    }
+
+
+
+    /* Thêm hiệu ứng khi hover */
+    .ctn2:hover {
+        --arrow: url("image/detail.svg");
+        cursor: var(--arrow), auto;
+    }
+
+        /* Hiệu ứng phóng to hình ảnh khi hover */
+        .ctn2:hover .img {
+            transform: scale(1.2); /* Phóng to 20% khi rê chuột vào */
+        }
+
+/* end */
+
+
+
+/* services4 */
+
+.servs4 {
+    margin-left: 44px;
+    margin-bottom: 300px;
+    margin-top: -560px;
+}
+
+.osr p {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(71, 55, 35, 1);
+    font-weight: 400;
+    margin-left: 72px;
+    letter-spacing: 2.4px;
+    margin-top: 4px;
+}
+
+
+.servs4 .osr2 {
+    font-size: 34px;
+    margin-left: 68px;
+    margin-top: -490px;
+    color: rgba(71, 55, 35, 1);
+    font-weight: 400;
+    font-family: 'HV_Muse', sans-serif;
+}
+
+
+.osr1 p{
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-left: 74px;
+    margin-top: 24px;
+    text-transform:none;
+}
+
+.servs4 .button4 {
+    margin-left: 74px;
+    margin-top: 74px;
+    padding: 12px 35px 12px 35px;
+    font-size: 14px;
+    border-color: rgba(71, 55, 35, 1);
+    color: rgba(71, 55, 35, 1);
+    background-color: white;
+    font-weight: 550;
+    border: solid 1px;
+}
+
+    .servs4 .button4:hover {
+        background-color: rgba(170, 131, 83, 1);
+        color: white;
+    }
+/*image-services*/
+
+/* Tạo kiểu vùng chứa hình ảnh */
+.ctn4 {
+    max-width: 600px;
+    max-height: 734px;
+    position: relative;
+    display: block; /* Sử dụng display inline-block để hai hình ảnh sẽ được hiển thị cùng một hàng */
+    overflow: hidden; /* Ngăn chặn phần tử con tràn ra ngoài */
+    margin-left: 664px;
+    margin-top: -80px;
+}
+
+    /* Tạo kiểu cho hình ảnh */
+    .ctn4 .img {
+        width: 634px;
+        height: 734px;
+        display: block;
+        opacity: 1;
+        transition: transform 0.6s ease; /* Thêm hiệu ứng chuyển đổi */
+    }
+
+
+
+    /* Thêm hiệu ứng khi hover */
+    .ctn4:hover {
+        --arrow: url("image/detail.svg");
+        cursor: var(--arrow), auto;
+    }
+
+        /* Hiệu ứng phóng to hình ảnh khi hover */
+        .ctn4:hover .img {
+            transform: scale(1.2); /* Phóng to 20% khi rê chuột vào */
+        }
+
+/* end */
+
+
+@media screen and (max-width: 1030px) {
+    .home .slide .welcome-text {
+        font-size: 4.75rem; /* Điều chỉnh kích thước font cho kích thước màn hình nhỏ hơn */
+        margin-left: 100px; /* Điều chỉnh margin-left nếu cần */
+    }
+}
+
+@media screen and (max-width: 817px) {
+    .home .slide .welcome-text {
+        font-size: 4rem; /* Điều chỉnh kích thước font cho kích thước màn hình nhỏ hơn */
+        margin-left: 50px; /* Điều chỉnh margin-left nếu cần */
+    }
+}
+
+
+

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Website</title>
+    <!-- font awesome cdn link  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- swiper js cdn link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- custom css link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+</head>
+
+<body>
+    @RenderBody()
+
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="box-container">
+            <div class="box">
+                <div class="contact">Contact Us To Book Now</div>
+                <div class="phonenumber">+84765597162</div>
+                <p class="email">eleganzahotel@gmail.com</p>
+                <img class="khung1" src="~/css/image/khung_mail.png" alt="">
+                <img class="mail" src="~/css/image/mail.png" alt="">
+            </div>
+            <div class="address">
+                <div class="Logo">ELEGANZA HOTEL</div>
+                <div class="mar">Marqués de San Esteban, 27 — 33206 Gijón</div>
+                <div class="calle">Calle del Marquesado, 10 - Piso 3</div>
+                <div class="nocopy">&copy;2024</div>
+                <div class="Logo1">eleganzahotel.com </div>
+                <div class="poli">Privacy Policy</div>
+                <div class="term">Terms & Conditions</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- end -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="~/js/book_page.js"></script>
+    <script src="~/Content/js/script.js"></script>
+    <script>
+        document.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+
+            if (window.scrollY > 0) {
+                header.classList.add('scrolled');
+            }
+
+            else {
+                header.classList.remove('scrolled');
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿
+<div id="layoutSidenav_nav">
+    @{ var userInfomatiom = (QuanLyKhachSan.Models.User)Session["ADMIN"]; }
+    <nav style="background-color: #F1F1F1 !important" class="sb-sidenav accordion " id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+
+                @if (userInfomatiom.idRole == 3)
+                {
+                    <a class="nav-link collapsed" href="/AdminHome/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Thống kê
+                    </a>
+                    <a class="nav-link collapsed" href="/AdminService/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý dịch vụ
+                    </a>
+                    <a class="nav-link collapsed" href="/AdminUser/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý nhân viên
+                    </a>
+
+                }
+                <a class="nav-link collapsed" href="/AdminType/Index">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Room Type Management
+                </a>
+                <a class="nav-link collapsed" href="/AdminRoom/Index">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Rooms Management
+                </a>
+                <a class="nav-link collapsed" href="/AdminUser/Customer">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Customers Management 
+                </a>
+                <a class="nav-link collapsed" href="/AdminBooking/Index">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Booking Management 
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
